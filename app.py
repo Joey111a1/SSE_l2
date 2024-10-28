@@ -29,10 +29,14 @@ def output_the_largest_number(input_string):
 
 def add_two_number(input_string):
     string_list = input_string.split("plus")
-    num1 = int(string_list[0][-2:])
+    num1 = int(string_list[0][-3:])
     num2 = int(string_list[1][:-1])
     sum1 = num1 + num2
     return sum1
+
+
+def multiply_two_number(input_string):
+    return 0
 
 
 def process_query(content):
