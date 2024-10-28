@@ -34,8 +34,8 @@ def process_query(content):
         return "Unknown"
     elif content == "What is your name?":
         return "qz824"
-    elif "largest" in content:
-        return output_the_largest_number(content)
+    //elif "largest" in content:
+        //return output_the_largest_number(content)
     return "Unrecorded query, sorry"
 
 
