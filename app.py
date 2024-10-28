@@ -35,6 +35,14 @@ def add_two_number(input_string):
     return sum1
 
 
+def subtract_two_number(input_string):
+    string_list = input_string.split("minus")
+    num1 = int(string_list[0][-3:])
+    num2 = int(string_list[1][:-1])
+    sub1 = num1 - num2
+    return sub1
+
+
 def multiply_two_number(input_string):
     string_list = input_string.split("multiplied by")
     num1 = int(string_list[0][-3:])
@@ -71,6 +79,8 @@ def process_query(content):
         return str(multiply_two_number(content))
     elif "square" in content:
         return str(find_square_and_cube(content))
+    elif "minus" in content:
+        return str(subtract_two_number(content))
     return "Unrecorded query, sorry"
 
 
