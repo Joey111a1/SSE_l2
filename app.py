@@ -43,6 +43,19 @@ def multiply_two_number(input_string):
     return product1
 
 
+def find_square_and_cube(input_string):
+    string_list = input_string.split(":")
+    string_list2 = string_list[1].split(",")
+    string_list2[-1] = string_list2[-1][:-1]
+    for i in range(7):
+        k = int(string_list2[i])
+        string_list2[i] = k
+        residue1 = round(k ** (1/2))
+        residue2 = round(k ** (1/3))
+        if (residue1 ** 2 == k) and (residue2 ** 3 == k):
+            return k
+
+
 def process_query(content):
     if content == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
@@ -56,6 +69,8 @@ def process_query(content):
         return str(add_two_number(content))
     elif "multiplied" in content:
         return str(multiply_two_number(content))
+    elif "square" in content:
+        return str(find_square_and_cube(content))
     return "Unrecorded query, sorry"
 
 
