@@ -64,6 +64,24 @@ def find_square_and_cube(input_string):
             return k
 
 
+def find_primes(input_string):
+    string_list = input_string.split(":")
+    string_list2 = string_list[1].split(",")
+    string_list2[-1] = string_list2[-1][:-1]
+    output_list = []
+    for i in range(5):
+        k = int(string_list2[i])
+        string_list2[i] = k
+        sqrt_k = round(k ** (1/2))
+        flag_prime = True
+        for j in range(2, sqrt_k + 1):
+            if k % j == 0:
+                flag_prime = False
+        if flag_prime:
+            output_list.append(str(k))
+    return ", ".join(output_list)
+
+
 def process_query(content):
     if content == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
@@ -81,6 +99,8 @@ def process_query(content):
         return str(find_square_and_cube(content))
     elif "minus" in content:
         return str(subtract_two_number(content))
+    elif "prime" in content:
+        return find_primes(content)
     return "Unrecorded query, sorry"
 
 
