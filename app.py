@@ -14,6 +14,19 @@ def submit():
     return render_template("hello.html", name=input_name, age=input_age)
 
 
+def output_the_largest_number(input_string):
+    string_list = input_string.split(",")
+    num1 = int(string_list[0][-2:])
+    num2 = int(string_list[1][-2:])
+    num3 = int(string_list[2][-2:])
+    max_num = num1
+    if max_num < num2:
+        max_num = num2
+    if max_num < num3:
+        max_num = num3
+    return max_num
+
+
 def process_query(content):
     if content == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
@@ -21,6 +34,8 @@ def process_query(content):
         return "Unknown"
     elif content == "What is your name?":
         return "qz824"
+    elif "largest" in content:
+        output_the_largest_number(content)
     return "Unrecorded query, sorry"
 
 
