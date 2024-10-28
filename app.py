@@ -18,7 +18,7 @@ def output_the_largest_number(input_string):
     string_list = input_string.split(",")
     num1 = int(string_list[0][-2:])
     num2 = int(string_list[1][-2:])
-    num3 = int(string_list[2][-2:])
+    num3 = int(string_list[2][:-1])
     max_num = num1
     if max_num < num2:
         max_num = num2
@@ -35,7 +35,7 @@ def process_query(content):
     elif content == "What is your name?":
         return "qz824"
     elif "largest" in content:
-        return output_the_largest_number(content)
+        output_the_largest_number(content)
     return "Unrecorded query, sorry"
 
 
