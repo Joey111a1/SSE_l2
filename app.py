@@ -16,6 +16,7 @@ def submit():
 
 def output_the_largest_number(input_string):
     string_list = input_string.split(",")
+    # get all the numbers from the string
     num1 = int(string_list[0][-2:])
     num2 = int(string_list[1][-2:])
     num3 = int(string_list[2][:-1])
@@ -27,8 +28,10 @@ def output_the_largest_number(input_string):
     return max_num
 
 
-def add_two_number(input_string):
+def add_number(input_string):
     string_list = input_string.split("plus")
+    # actually it is better to use a list rather than call them num1, num2, ...
+    # And in this way, no need to use "if"
     if len(string_list) == 2:
         num1 = int(string_list[0][-3:])
         num2 = int(string_list[1][:-1])
@@ -68,12 +71,14 @@ def multiply_two_number(input_string):
 def find_square_and_cube(input_string):
     string_list = input_string.split(":")
     string_list2 = string_list[1].split(",")
+    # get rid of the ? at the end of the sentence
     string_list2[-1] = string_list2[-1][:-1]
     for i in range(7):
         k = int(string_list2[i])
         string_list2[i] = k
         residue1 = round(k ** (1/2))
         residue2 = round(k ** (1/3))
+        # the rounded result should be able to get back to the original number
         if (residue1 ** 2 == k) and (residue2 ** 3 == k):
             return k
 
@@ -91,10 +96,12 @@ def find_primes(input_string):
         for j in range(2, sqrt_k + 1):
             if k % j == 0:
                 flag_prime = False
+        # This gauge doesn't work for 2 and 3
         if k == 2 or k == 3:
             flag_prime = True
         if flag_prime:
             output_list.append(str(k))
+    # actually, we could not know the expected output of this task
     return ", ".join(output_list)
 
 
@@ -108,7 +115,7 @@ def process_query(content):
     elif "largest" in content:
         return str(output_the_largest_number(content))
     elif "plus" in content:
-        return str(add_two_number(content))
+        return str(add_number(content))
     elif "multiplied" in content:
         return str(multiply_two_number(content))
     elif "square" in content:
