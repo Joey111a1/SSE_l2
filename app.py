@@ -27,6 +27,14 @@ def output_the_largest_number(input_string):
     return max_num
 
 
+def add_two_number(input_string):
+    string_list = input_string.split("plus")
+    num1 = int(string_list[0][-2:])
+    num2 = int(string_list[2][:-1])
+    sum1 = num1 + num2
+    return sum1
+
+
 def process_query(content):
     if content == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
@@ -35,7 +43,7 @@ def process_query(content):
     elif content == "What is your name?":
         return "qz824"
     elif "largest" in content:
-        return output_the_largest_number(content)
+        return str(output_the_largest_number(content))
     return "Unrecorded query, sorry"
 
 
