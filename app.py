@@ -49,6 +49,14 @@ def subtract_two_number(input_string):
     return sub1
 
 
+def power_calc(input_string):
+    string_list = input_string.split("to the power of")
+    num1 = int(string_list[0][-3:])
+    num2 = int(string_list[1][:-1])
+    power1 = num1 ** num2
+    return power1
+
+
 def multiply_two_number(input_string):
     string_list = input_string.split("multiplied by")
     num1 = int(string_list[0][-3:])
@@ -83,6 +91,8 @@ def find_primes(input_string):
         for j in range(2, sqrt_k + 1):
             if k % j == 0:
                 flag_prime = False
+        if k == 2 or k == 3:
+            flag_prime = True
         if flag_prime:
             output_list.append(str(k))
     return ", ".join(output_list)
@@ -107,6 +117,8 @@ def process_query(content):
         return str(subtract_two_number(content))
     elif "prime" in content:
         return find_primes(content)
+    elif "power" in content:
+        return str(power_calc(content))
     return "Unrecorded query, sorry"
 
 
