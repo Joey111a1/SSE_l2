@@ -29,9 +29,15 @@ def output_the_largest_number(input_string):
 
 def add_two_number(input_string):
     string_list = input_string.split("plus")
-    num1 = int(string_list[0][-3:])
-    num2 = int(string_list[1][:-1])
-    sum1 = num1 + num2
+    if len(string_list) == 2:
+        num1 = int(string_list[0][-3:])
+        num2 = int(string_list[1][:-1])
+        sum1 = num1 + num2
+    if len(string_list) == 3:
+        num1 = int(string_list[0][-3:])
+        num2 = int(string_list[1])
+        num3 = int(string_list[2][:-1])
+        sum1 = num1 + num2 + num3
     return sum1
 
 
