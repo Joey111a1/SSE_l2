@@ -36,7 +36,11 @@ def add_two_number(input_string):
 
 
 def multiply_two_number(input_string):
-    return 0
+    string_list = input_string.split("multiplied by")
+    num1 = int(string_list[0][-3:])
+    num2 = int(string_list[1][:-1])
+    product1 = num1 * num2
+    return product1
 
 
 def process_query(content):
@@ -50,6 +54,8 @@ def process_query(content):
         return str(output_the_largest_number(content))
     elif "plus" in content:
         return str(add_two_number(content))
+    elif "multiplied" in content:
+        return str(multiply_two_number(content))
     return "Unrecorded query, sorry"
 
 
