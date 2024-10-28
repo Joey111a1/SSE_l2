@@ -44,6 +44,8 @@ def process_query(content):
         return "qz824"
     elif "largest" in content:
         return str(output_the_largest_number(content))
+    elif "plus" in content:
+        return str(add_two_number(content))
     return "Unrecorded query, sorry"
 
 
