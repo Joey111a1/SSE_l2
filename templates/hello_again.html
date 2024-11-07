@@ -1,0 +1,50 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, {{name}}!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 32px;
+            background-color: #f0f0f0;
+            color: #333;
+            margin-top: 30px;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .form_1 {
+            width: 60%;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .head_for_repo {
+            font-size: 32px;
+            list-style-type: decimal;
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    <p><strong>Hello, {{name}}!</strong></p>
+    <div class="form_1">
+        <ol>
+            {% for item in list1 %}
+                <li class="head_for_repo"><strong>Full Repo Name: {{ item[0] }}</strong></li>
+                <p>Created Date: {{ item[1] }}</p>
+                <p>Updated Date: {{ item[2] }}</p><br>
+                <p><strong>{{ item[3] }}</strong></p>
+                <p>Commit Hash: {{ item[4] }}</p>
+                <p>Committer: {{ item[5] }}</p>
+                <p>Committed Date: {{ item[6] }}</p>
+                <p>Commit message: {{ item[7] }}</p>
+                <br>
+            {% endfor %}
+        </ol>
+    </div>
+</body>

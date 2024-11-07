@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import requests
 app = Flask(__name__)
 
 
@@ -14,6 +15,7 @@ def submit():
     return render_template("hello.html", name=input_name, age=input_age)
 
 
+# lab 4
 def output_the_largest_number(input_string):
     string_list = input_string.split(",")
     # get all the numbers from the string
@@ -138,3 +140,42 @@ def query_route():
         return result
     else:
         return "No query parameter required", 400
+
+
+# lab 5
+@app.route("/index2")
+def another_index():
+    return render_template("index_again.html")
+
+
+@app.route("/submit_again", methods=["POST"])
+def submit_again():
+    input_name = request.form.get("name")
+    response = requests.get(f"https://api.github.com/users/{input_name}/repos")
+    repo_list = []
+    if response.status_code == 200:
+        repos = response.json()
+        for i in range(len(repos)):
+            repo = repos[i]
+            temp_repo = []
+            response_commit = requests.get(f"https://api.github.com/repos/"
+                                           f"{input_name}/{repo['name']}"
+                                           f"/commits")
+            if response_commit.status_code == 200 and \
+                    len(response_commit.json()) > 0:
+                last_commit = response_commit.json()[0]
+                temp_repo.extend([repo["full_name"], repo["created_at"],
+                                  repo["updated_at"], "Last Commit",
+                                  last_commit["sha"],
+                                  last_commit["commit"]["author"]["name"],
+                                  last_commit["commit"]["author"]["date"],
+                                  last_commit["commit"]["message"]])
+            else:
+                temp_repo.extend([repo["full_name"], repo["created_at"],
+                                  repo["updated_at"],
+                                  "Sorry, repo not available", "", "", ""])
+            repo_list.append(temp_repo)
+            print(temp_repo)
+    print(repo_list)
+    return render_template("hello_again.html",
+                           name=input_name, list1=repo_list)
