@@ -12,6 +12,8 @@ jobs:
           python-version: 3.12
       - name: Install flake8
         run: pip install flake8
+      - name: Install requests
+        run: pip install requests
       - name: Run flake8
         run: flake8 .
 
